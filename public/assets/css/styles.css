@@ -1,0 +1,64 @@
+#introduction {
+    background-color: #3a5db5;
+    background-image: url("../images/garage_big.svg"), url("../images/garage_small.png"), linear-gradient(180deg, #b53a8a 1%, #3a5db5 100%);
+    background-repeat: no-repeat, no-repeat;
+    background-position: 5% 65%, 44% 20%;
+}
+
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.title {
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+}
+
+#lang_menu {
+    margin: 6px 0 6px 0;
+}
+
+.fill-viewport {
+    min-height: 100vh;
+}
+
+.text-white-70 {
+    color: rgba(255,255,255,0.7);
+}
+
+.label {
+    font-weight: bold;
+    color: white;
+}
+
+.geminfo {
+    margin-top: 25px;
+    text-align: center;
+}
+
+.guess_input {
+    font-size: 72px;
+    text-align: center;
+}
+
+.guess_markers_list {
+    text-align: center;
+}
+
+.marks {
+    margin: 3px;
+    font-size: 18px;
+}
+
+.button {
+    margin-bottom: 5px;
+}
+
+.scores {
+    background: white;
+}

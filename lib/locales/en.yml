@@ -1,0 +1,50 @@
+en:
+  codebreaker: Codebreaker web
+  start_message: "Welcome to the Game"
+  home_page: Return to home page
+  game_rules: "Codebreaker is a logic game in which a code-breaker tries to break a secret code created by a code-maker. The codemaker, which will be played by the application we’re going to write, creates a secret code of four numbers between 1 and 6.
+  The codebreaker gets some number of chances to break the code (depends on chosen difficulty). In each turn, the codebreaker makes a guess of 4 numbers. The codemaker then marks the guess with up to 4 signs - + or - or empty spaces.
+  A + indicates an exact match: one of the numbers in the guess is the same as one of the numbers in the secret code and in the same position. For example:
+  Secret number - 1234
+  Input number - 6264
+  Number of pluses - 2 (second and fourth position)
+  A - indicates a number match: one of the numbers in the guess is the same as one of the numbers in the secret code but in a different position. For example:
+  Secret number - 1234
+  Input number - 6462
+  Number of minuses - 2 (second and fourth position)
+  An empty space indicates that there is not a current digit in a secret number.
+  If codebreaker inputs the exact number as a secret number - codebreaker wins the game. If all attempts are spent - codebreaker loses.
+  Codebreaker also has some number of hints(depends on chosen difficulty). If a user takes a hint - he receives back a separate digit of the secret code.
+"
+  difficulty: "You had to %{hints} hints and %{attempts} attempts "
+  win_game_message: "Congratulations, %{name}! You won the game! "
+  have_no_hints_message: "Your hints ended "
+  print_hint_number: "Hint number: %{code} "
+  registration_name_length_error: "It must be more than 3 and less than 20 symbols."
+  not_found: Page not found
+  cb_rules: Codebreaker rules
+  easy_level: "Easy - %{attempts} attempts - %{hints} hints"
+  hard_level: "Hard - %{attempts} attempts - %{hints} hints"
+  medium_level: "Medium - %{attempts} attempts - %{hints} hints"
+  hello_msg: "Hello, %{name}! "
+  short_rules: Try to guess 4-digit number, that consists of numbers in a range from 1 to 6.
+  play_again_button: Play again!
+  statistics_button: Statistics
+  lose_game_message: "You lose! "
+  top_of_players: "Top Players: "
+  home: Home
+  date: Date
+  name: Name
+  level: Level
+  attempts_left: Attempts Left
+  hints_left: Hints Left
+  choose_game_level: "Choose level >>>"
+  start_button: Start the game!
+  player_name: "Player name:"
+  game_level: "Game level:"
+  rules: Rules
+  stats: Statistics
+  code_was: The code was
+  attempts: Attempts
+  hints: Hints
+  show_hint: "Take hint!"
