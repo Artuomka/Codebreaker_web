@@ -36,8 +36,8 @@ en:
   date: Date
   name: Name
   level: Level
-  attempts_left: Attempts Left
-  hints_left: Hints Left
+  attempts_spent: Attempts spent
+  hints_spent: Hints spent
   choose_game_level: "Choose level >>>"
   start_button: Start the game!
   player_name: "Player name:"
