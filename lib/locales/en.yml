@@ -39,7 +39,7 @@ en:
   attempts_spent: Attempts spent
   hints_spent: Hints spent
   attempts_left: Attempts left
-  hints_left: Attemps left
+  hints_left: Hints left
   choose_game_level: "Choose level >>>"
   start_button: Start the game!
   player_name: "Player name:"

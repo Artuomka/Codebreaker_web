@@ -38,6 +38,7 @@ class Racker < Viewer
 
   def guess
     Rack::Response.new do |response|
+      start_game.attempt_wasted
       return lose unless start_game.attempts.positive?
 
       guess_code = @request.params['guess_code']
@@ -45,7 +46,6 @@ class Racker < Viewer
       @request.session[:guess_code] = start_game.start(guess_code)
       return win if start_game.check_win?(guess_code)
 
-      start_game.attempt_wasted
       response.redirect('/play')
     end
   end

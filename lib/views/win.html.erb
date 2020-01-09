@@ -20,13 +20,13 @@
                   </span>
             </button>
             <button type="button" class="btn btn-primary" disabled>
-              <%= I18n.t(:attempts_spent)%>:
+              <%= I18n.t(:attempts_left)%>:
               <span class="badge badge-light">
                     <%= user_attempts %>/<%= Codebreaker::Entities::Game::DIFFICULTIES[user_level.to_sym][:attempts]%>
                   </span>
             </button>
             <button type="button" class="btn btn-primary" disabled>
-              <%= I18n.t(:hints_spent)%>:
+              <%= I18n.t(:hints_left)%>:
               <span class="badge badge-light">
                     <%= user_hints %>/<%= Codebreaker::Entities::Game::DIFFICULTIES[user_level.to_sym][:hints]%>
                   </span>
