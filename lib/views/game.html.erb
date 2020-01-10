@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" class="mdl-js">
 <%= view "components/header.html.erb" %>
@@ -22,20 +21,24 @@
               <%= I18n.t(:level) %>:
               <span class="badge badge-light">
                     <%= user_level %>
-                  </span>
+              </span>
             </button>
           </div>
           <div class="col text-center button">
             <button type="button" class="btn btn-primary">
               <%= I18n.t(:attempts) %>:
-              <span class="badge badge-light"><%= user_attempts %>/<%= Codebreaker::Entities::Game::DIFFICULTIES[user_level.to_sym][:attempts]%></span>
+              <span class="badge badge-light">
+                <%= user_attempts %>/<%= Codebreaker::Entities::Game::DIFFICULTIES[user_level.to_sym][:attempts]%>
+              </span>
             </button>
           </div>
 
           <div class="col button">
             <button type="button" class="btn btn-primary float-right">
               <%= I18n.t(:hints) %>:
-              <span class="badge badge-light"><%= user_hints %>/<%= Codebreaker::Entities::Game::DIFFICULTIES[user_level.to_sym][:hints]%></span>
+              <span class="badge badge-light">
+                <%= user_hints %>/<%= Codebreaker::Entities::Game::DIFFICULTIES[user_level.to_sym][:hints]%>
+              </span>
             </button>
           </div>
         </div>
@@ -54,7 +57,7 @@
           <div class="form-group guess_markers_list">
             <div id="guess_marker">
               <% if @request.session[:guess_code].empty? %>
-                <% 4.times do %>
+                <% @request.session[:guess_code].length.times do %>
                   <button type="button" class="btn btn-danger marks" disabled>x</button>
                 <% end %>
               <% else %>
@@ -72,12 +75,12 @@
           <hr class="mb-4">
 
           <button type="submit" class="btn btn-primary btn-lg">
-            Submit
+            <%= I18n.t(:submit) %>
           </button>
         </form>
         <form method="post" action="/hint">
           <button class="btn btn-warning btn-lg float-right" role="button"
-                  <% if hints_not_remain? %> disabled<% end %>>
+            <% if hints_not_remain? %> disabled<% end %>>
             <%= I18n.t(:show_hint) %>
             <% if used_hints.any? %>
                   <span class="badge badge-light">

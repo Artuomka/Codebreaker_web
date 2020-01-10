@@ -26,10 +26,10 @@
                   </span>
             </button>
             <button type="button" class="btn btn-primary" disabled>
-              <%= I18n.t(:hints_left)%>:
+                <%= I18n.t(:hints_left)%>:
               <span class="badge badge-light">
-                    <%= user_hints %>/<%= Codebreaker::Entities::Game::DIFFICULTIES[user_level.to_sym][:hints]%>
-                  </span>
+                <%= user_hints %>/<%= Codebreaker::Entities::Game::DIFFICULTIES[user_level.to_sym][:hints]%>
+              </span>
             </button>
           </div>
         </div>
@@ -45,7 +45,8 @@
                 <strong><%= game_code %></strong>
               </h4>
             </div>
-            <img src="assets/images/lost.gif" class="img-fluid" alt="You lose the game!">
+            <img src="assets/images/lost.gif" class="img-fluid"
+                 alt= <%= I18n.t(:you_lose_the_game) %> >
           </div>
         </div>
         <hr class="mb-4">

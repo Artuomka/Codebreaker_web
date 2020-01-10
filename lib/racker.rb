@@ -148,7 +148,6 @@ class Racker < Viewer
                     else
                       game = Codebreaker::Entities::Game.new
                       game.init_game(Codebreaker::Entities::Game::DIFFICULTIES[user_level.to_sym])
-
                       game
                     end
   end

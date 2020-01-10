@@ -51,3 +51,5 @@ en:
   hints: Hints
   show_hint: "Take hint!"
   no_winners_yet: "There are no winners yet! Be the first!"
+  submit: Submit
+  you_lose_the_game: You lose the game!
