@@ -2,7 +2,7 @@ require 'spec_helper'
 
 RSpec.describe Racker do
   let(:app) { Rack::Builder.parse_file('config.ru').first }
-  let(:game) { Codebreaker::Entities::Game.new }
+  let(:start_game) { Codebreaker::Entities::Game.new }
   let(:path) { 'test_data.yml' }
 
   before do
@@ -55,22 +55,22 @@ RSpec.describe Racker do
 
   describe '#hint' do
     before do
-      game.init_game(Codebreaker::Entities::Game::DIFFICULTIES[:hard])
-      env 'rack.session', game: game, hints_wasted: [], level: :easy
+      start_game.init_game(Codebreaker::Entities::Game::DIFFICULTIES[:hard])
+      env 'rack.session', start_game: start_game, hints_wasted: [], level: :easy
       get '/hint'
     end
 
     it 'add value to session hint array' do
       post '/hint'
       expect(last_request.session[:hints_wasted]).not_to be_empty
-      expect(last_request.session[:game].code.join).to include(last_request.session[:hints_wasted].join)
+      expect(last_request.session[:start_game].code.join).to include(last_request.session[:hints_wasted].join)
     end
   end
 
   describe '#play' do
     before do
-      game.init_game(Codebreaker::Entities::Game::DIFFICULTIES[:hard])
-      env 'rack.session', game: game, guess_code: ''
+      start_game.init_game(Codebreaker::Entities::Game::DIFFICULTIES[:hard])
+      env 'rack.session', start_game: start_game, guess_code: ''
       post '/play', level: 'easy', player_name: 'Denis'
     end
 
@@ -97,8 +97,8 @@ RSpec.describe Racker do
 
   describe '#guess' do
     before do
-      game.init_game(Codebreaker::Entities::Game::DIFFICULTIES[:hard])
-      env 'rack.session', game: game, hints: [], level: 'easy', player_name: 'Dima'
+      start_game.init_game(Codebreaker::Entities::Game::DIFFICULTIES[:hard])
+      env 'rack.session', start_game: start_game, hints: [], level: 'easy', player_name: 'Dima'
       post '/guess', guess_code: '1111'
     end
 

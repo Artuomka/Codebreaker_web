@@ -1,6 +1,6 @@
 require_relative '../dependencies'
 class Racker < Viewer
-  attr_reader :request, :start_game
+  attr_reader :request
 
   def self.call(env)
     new(env).response.finish
@@ -26,7 +26,7 @@ class Racker < Viewer
   end
 
   def index
-    return game_view if exist?(:game)
+    return game_view if exist?(:start_game)
 
     menu_view
   end
@@ -42,8 +42,7 @@ class Racker < Viewer
       return lose unless start_game.attempts.positive?
 
       guess_code = @request.params['guess_code']
-      @request.session[:guess] = guess_code
-      @request.session[:guess_code] = start_game.start(guess_code)
+      fetch_current_guess_code(guess_code)
       return win if start_game.check_win?(guess_code)
 
       response.redirect('/play')
@@ -51,7 +50,7 @@ class Racker < Viewer
   end
 
   def lose
-    return error404_view unless exist?(:game)
+    return error404_view unless exist?(:start_game)
 
     Rack::Response.new(lose_view) do
       destroy_session
@@ -59,7 +58,7 @@ class Racker < Viewer
   end
 
   def win
-    return error404_view unless exist?(:game)
+    return error404_view unless exist?(:start_game)
 
     Rack::Response.new(win_view) do
       @storage.save_game_results(start_game.to_h(user_name))
@@ -90,7 +89,7 @@ class Racker < Viewer
 
   def play
     set_guess_code
-    @request.session[:game] = start_game
+    @request.session[:start_game] = start_game
     game_view
   end
 
@@ -107,22 +106,27 @@ class Racker < Viewer
   end
 
   def user_attempts
-    return @request.session[:game].attempts if exist?(:game)
+    return @request.session[:start_game].attempts if exist?(:start_game)
 
     Codebreaker::Entities::Game::DIFFICULTIES[user_level.to_sym][:attempts]
   end
 
   def user_hints
-    return @request.session[:game].hints.size if exist?(:game)
+    return @request.session[:start_game].hints.size if exist?(:start_game)
 
     Codebreaker::Entities::Game::DIFFICULTIES[user_level.to_sym][:hints]
   end
 
   def game_code
-    @request.session[:game].code
+    @request.session[:start_game].code
   end
 
   private
+
+  def fetch_current_guess_code(guess_code)
+    @request.session[:guess] = guess_code
+    @request.session[:guess_code] = start_game.start(guess_code)
+  end
 
   def destroy_session
     @request.session.clear
@@ -139,13 +143,13 @@ class Racker < Viewer
   end
 
   def start_game
-    @game ||= if exist?(:game)
-                @request.session[:game]
-              else
-                game = Codebreaker::Entities::Game.new
-                game.init_game(Codebreaker::Entities::Game::DIFFICULTIES[user_level.to_sym])
+    @start_game ||= if exist?(:start_game)
+                      @request.session[:start_game]
+                    else
+                      game = Codebreaker::Entities::Game.new
+                      game.init_game(Codebreaker::Entities::Game::DIFFICULTIES[user_level.to_sym])
 
-                game
-              end
+                      game
+                    end
   end
 end

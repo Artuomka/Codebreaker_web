@@ -11,6 +11,7 @@
             <h1 class="text-white title"><%= I18n.t(:codebreaker)%></h1>
           </div>
         </div>
+        <% if @request.session[:scores] != nil %>
         <p class="lead text-white-70"><%= I18n.t(:top_of_players)%></p>
         <hr class="mb-4">
         <div class="table-responsive-md scores">
@@ -35,9 +36,12 @@
                 <td><%= data[:hints_wasted] %>/<%= data[:all_hints] %></td>
                 <td><%= data[:date].strftime "%Y-%m-%d %H:%M:%S" %></td>
               </tr>
-            <% end %>
             </tbody>
-          </table>
+        <% end %>
+        </table>
+        <% else %>
+           <h2 style="color: yellow"> <%=I18n.t(:no_winners_yet) %> </h2>
+        <% end %>
         </div>
         <hr class="mb-4">
         <a class="btn btn-primary btn-lg" href="/" role="button">

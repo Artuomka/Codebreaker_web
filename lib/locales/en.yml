@@ -50,3 +50,4 @@ en:
   attempts: Attempts
   hints: Hints
   show_hint: "Take hint!"
+  no_winners_yet: "There are no winners yet! Be the first!"
