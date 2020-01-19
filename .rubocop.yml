@@ -5,13 +5,10 @@ Style/Documentation:
   Enabled: false
 
 Metrics/MethodLength:
-  Max: 30
+  Max: 11
 
 Style/FrozenStringLiteralComment:
   Enabled: false
 
 ClassLength:
   Max: 150
-
-Metrics/BlockLength:
-  Max: 25
