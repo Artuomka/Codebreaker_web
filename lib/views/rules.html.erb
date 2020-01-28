@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" class="mdl-js">
+<%= view "components/header.html.erb" %>
+<body>
+  <section id="introduction">
+    <div class="container">
+      <div class="row fill-viewport align-items-center justify-content-center">
+        <div class="col-12 col-md-6">
+          <div class="row justify-content-center">
+            <div class="col-md-auto">
+              <h1 class="text-white title"><%= I18n.t(:cb_rules) %></h1>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <p class="lead text-white-70" align="justify">
+              <%= I18n.t(:game_rules) %>
+            </p>
+          </div>
+          <hr class="mb-4">
+          <div class="row justify-content-center">
+            <a class="btn btn-primary btn-lg" href="/" role="button">
+              <%= I18n.t(:home_page) %>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

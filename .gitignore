@@ -7,8 +7,8 @@
 /spec/reports/
 /tmp/
 .idea
-.rubocop.yml
 # rspec failure tracking
 .rspec_status
 .history
 .DS_Store
+.data.yml
