@@ -4,9 +4,6 @@ Metrics/LineLength:
 Style/Documentation:
   Enabled: false
 
-Metrics/MethodLength:
-  Max: 11
-
 Style/FrozenStringLiteralComment:
   Enabled: false
 

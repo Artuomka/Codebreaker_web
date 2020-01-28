@@ -57,7 +57,7 @@
             <div class="form-group guess_markers_list">
               <div id="guess_marker">
                 <% if @request.session[:guess_code].empty? %>
-                  <% @request.session[:guess_code].length.times do %>
+                  <% Viewer::NUMBER_OF_MARKERS.times do %>
                     <button type="button" class="btn btn-danger marks" disabled>x</button>
                   <% end %>
                 <% else %>

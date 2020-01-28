@@ -1,4 +1,6 @@
 class Viewer
+  NUMBER_OF_MARKERS = 4
+
   def stats_view
     template('statistics.html.erb')
   end
